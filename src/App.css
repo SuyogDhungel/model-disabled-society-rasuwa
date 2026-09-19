@@ -148,6 +148,40 @@
   .primary-nav a {
     padding: 0.5rem 0.1rem;
   }
+
+  .nav-lang-item {
+    display: flex;
+    align-items: center;
+    margin-left: 0.5rem;
+  }
+}
+
+.lang-toggle-btn {
+  background: var(--surface-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.02em;
+}
+
+.lang-toggle-btn:hover {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(7, 91, 158, 0.25);
+}
+
+.primary-nav .nav-lang-item {
+  padding-block: 0.5rem;
 }
 
 /* ---------- Hero ---------- */

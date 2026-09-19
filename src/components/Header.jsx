@@ -21,7 +21,7 @@ import orgLogo from "../assets/org-logo.png";
  * and in the homepage hero, all from the same value.
  */
 export default function Header() {
-  const { t } = useLanguage();
+  const { t, lang, setLang, otherLang } = useLanguage();
   const { content } = useSiteContent();
   const org = content.organization;
   const [isOpen, setIsOpen] = useState(false);
@@ -122,6 +122,19 @@ export default function Header() {
                 </NavLink>
               </li>
             ))}
+            <li className="nav-lang-item">
+              <button
+                type="button"
+                className="lang-toggle-btn"
+                onClick={() => {
+                  setIsOpen(false);
+                  setLang(otherLang);
+                }}
+                aria-label={lang === "en" ? "नेपाली भाषामा हेर्नुहोस्" : "Switch to English"}
+              >
+                {lang === "en" ? "नेपाली" : "English"}
+              </button>
+            </li>
           </ul>
         </nav>
       </div>
