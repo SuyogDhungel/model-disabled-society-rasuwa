@@ -36,14 +36,13 @@ export default function About() {
           <div>
             <dt>{about.affiliationLabel}</dt>
             <dd>
-              {lang === "ne" ? "समाज कल्याण परिषद्" : "Social Welfare Council"}, {org.affiliationNo.split(" ")[0]}
+              Social Welfare Council (SWC), {org.affiliationNo.split(" ")[0]}
             </dd>
           </div>
           <div>
             <dt>{about.locationLabel}</dt>
             <dd>
-              <span lang="ne">{org.wardNe}</span>, <span lang="ne">{org.districtNe}</span>,{" "}
-              {org.provinceEn}
+              {org.wardEn || "Naukunda Rural Municipality – 3, Parchyang"}, {org.districtEn || "Rasuwa District"}, {org.provinceEn || "Bagmati Province, Nepal"}
             </dd>
           </div>
         </dl>

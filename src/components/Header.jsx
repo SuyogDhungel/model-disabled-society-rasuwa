@@ -66,8 +66,8 @@ export default function Header() {
           </a>
           <a className="brand-text-link" href="/">
             <span className="brand-text">
-              <span lang="ne">{org.nameNe}</span>
-              <span className="brand-sub">{org.shortNameEn}</span>
+              <span className="brand-title">{org.shortNameEn || org.nameEn || "Model Disabled Society Rasuwa"}</span>
+              <span className="brand-sub">Naukunda, Rasuwa, Nepal</span>
             </span>
           </a>
         </div>
@@ -122,19 +122,6 @@ export default function Header() {
                 </NavLink>
               </li>
             ))}
-            <li className="nav-lang-item">
-              <button
-                type="button"
-                className="lang-toggle-btn"
-                onClick={() => {
-                  setIsOpen(false);
-                  setLang(otherLang);
-                }}
-                aria-label={lang === "en" ? "नेपाली भाषामा हेर्नुहोस्" : "Switch to English"}
-              >
-                {lang === "en" ? "नेपाली" : "English"}
-              </button>
-            </li>
           </ul>
         </nav>
       </div>

@@ -35,22 +35,20 @@ export default function Home() {
           <div className="hero-copy">
             <div className="hero-badge-wrap">
               <span className="eyebrow">
-                <Localized item={content.home} field="eyebrow" lang={lang} as="span" />
+                Naukunda-3, Parchyang • Rasuwa District, Nepal
               </span>
             </div>
             <h1>
-              <Localized item={content.home} field="title" lang={lang} as="span" />
+              Empowering Persons with Disabilities in Rasuwa
             </h1>
             <p className="hero-subtitle">
-              <Localized item={content.home} field="subtitle" lang={lang} as="span" />
+              A dedicated grassroots organization advocating for the dignity, equal rights, barrier-free accessibility, and active social inclusion of persons with disabilities.
             </p>
           </div>
           <div
             className={"hero-media" + (!content.appearance.heroImageUrl ? " hero-logo" : "")}
           >
-            {/* Real <img> with a real alt attribute -- not a CSS background-image,
-                which is what made hero photography invisible to screen readers
-                on 7 of the 9 audited sites (CWIN, Consortium, Peace, Sabal, etc). */}
+            {/* Real <img> with a real alt attribute */}
             <img src={heroImageUrl} alt={heroImageAlt} width="800" height="500" />
           </div>
         </div>
@@ -58,9 +56,14 @@ export default function Home() {
 
       <section className="section">
         <div className="container">
-          <h2>{home.introHeading}</h2>
+          <h2>About the Organization</h2>
+          <div className="intro-badge-row">
+            <span className="info-badge"><strong>Regd. No:</strong> {org.registrationNo || "523/2081-82"} (DAO Rasuwa)</span>
+            <span className="info-badge"><strong>SWC Affiliation:</strong> {org.affiliationNo ? org.affiliationNo.split(" ")[0] : "58380"}</span>
+            <span className="info-badge"><strong>Location:</strong> Naukunda-3, Parchyang, Rasuwa</span>
+          </div>
           <p className="lede preserve-lines">
-            <Localized item={content.home} field="intro" lang={lang} as="span" />
+            Model Disabled Society Rasuwa is a non-profit community organization legally registered with the District Administration Office (DAO), Rasuwa and affiliated with the Social Welfare Council (SWC). Headquartered in Naukunda Rural Municipality – 3, Parchyang, we work collaboratively with persons with disabilities, their families, local governments, and civil society partners to provide assistive referrals, champion disability rights, and build self-reliant, inclusive communities across Rasuwa District.
           </p>
         </div>
       </section>

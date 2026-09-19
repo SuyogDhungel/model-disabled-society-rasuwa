@@ -148,40 +148,6 @@
   .primary-nav a {
     padding: 0.5rem 0.1rem;
   }
-
-  .nav-lang-item {
-    display: flex;
-    align-items: center;
-    margin-left: 0.5rem;
-  }
-}
-
-.lang-toggle-btn {
-  background: var(--surface-alt);
-  color: var(--text);
-  border: 1px solid var(--border);
-  padding: 0.35rem 0.85rem;
-  border-radius: 9999px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  min-height: 34px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  letter-spacing: 0.02em;
-}
-
-.lang-toggle-btn:hover {
-  background: var(--accent);
-  color: #ffffff;
-  border-color: var(--accent);
-  box-shadow: 0 4px 12px rgba(7, 91, 158, 0.25);
-}
-
-.primary-nav .nav-lang-item {
-  padding-block: 0.5rem;
 }
 
 /* ---------- Hero ---------- */
@@ -289,28 +255,53 @@
   line-height: 1.65;
 }
 
+.intro-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-block: 0.75rem 1.25rem;
+}
+
+.info-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  font-size: 0.84rem;
+  color: var(--muted);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.info-badge strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
 .card-grid {
   display: grid;
   gap: 1.5rem;
   margin-top: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1.6rem 1.4rem;
+  border-radius: 12px;
+  padding: 1.75rem 1.5rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
   border-top: 3px solid var(--accent);
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 28px -6px rgba(0, 0, 0, 0.1), 0 0 0 1px var(--border-strong);
   border-color: var(--border-strong);
 }
 

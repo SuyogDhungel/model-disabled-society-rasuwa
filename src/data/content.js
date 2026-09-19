@@ -58,19 +58,19 @@ export const content = {
       switchLanguage: "नेपालीमा हेर्नुहोस्",
     },
     home: {
-      heroEyebrow: "Naukunda-3, Parchyang · Rasuwa District",
-      heroTitle: "Namuna Apanga Samaj Rasuwa",
+      heroEyebrow: "Model Disabled Society Rasuwa • Naukunda-3, Parchyang",
+      heroTitle: "Empowering Persons with Disabilities in Rasuwa",
       heroSubtitle:
-        "A community organisation working for the rights, dignity and inclusion of persons with disabilities in Rasuwa.",
-      heroImageAlt: "Namuna Apanga Samaj Rasuwa Official Emblem",
+        "A dedicated grassroots organization advocating for the dignity, equal rights, accessibility, and active social inclusion of persons with disabilities across Rasuwa District.",
+      heroImageAlt: "Model Disabled Society Rasuwa Official Logo",
       ctaPrimary: "Learn about our work",
       ctaSecondary: "Get in touch",
-      introHeading: "Who we are",
+      introHeading: "About the Organization",
       introBody:
-        "Namuna Apanga Samaj Rasuwa is registered with the District Administration Office, Rasuwa (Regd. No. 523/2081-82) and affiliated with the Social Welfare Council (Affiliation No. 58380). We work with persons with disabilities and their families in Naukunda Rural Municipality and across Rasuwa district.",
-      focusHeading: "What we work on",
+        "Model Disabled Society Rasuwa is a non-profit community organization legally registered with the District Administration Office (DAO), Rasuwa (Registration No: 523/2081-82) and affiliated with the Social Welfare Council (SWC Affiliation No: 58380).\n\nHeadquartered in Naukunda Rural Municipality – 3, Parchyang, we work collaboratively with persons with disabilities, their families, local government, and community partners to champion accessibility, protect fundamental human rights, and foster self-reliance.",
+      focusHeading: "Core Initiatives",
       focusIntro:
-        "Our initiatives focus on community-level empowerment, rights advocacy, and support services for persons with disabilities across Rasuwa district.",
+        "Our strategic programs focus on grassroots empowerment, barrier-free accessibility, policy advocacy, and community support.",
       focusAreas: [
         {
           title: "Rights and advocacy",

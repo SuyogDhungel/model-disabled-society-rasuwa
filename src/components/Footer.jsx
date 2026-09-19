@@ -12,75 +12,63 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container site-footer-grid">
         <div>
-          <p className="footer-org-name" lang="ne">
-            {org.nameNe}
-          </p>
-          <p>{org.shortNameEn}</p>
+          <h3 className="footer-org-name">{org.shortNameEn || org.nameEn || "Model Disabled Society Rasuwa"}</h3>
+          <p className="footer-tagline">Naukunda-3, Rasuwa, Bagmati Province, Nepal</p>
           <div className="footer-reg-info">
             <p className="footer-reg-item">
-              <span className="footer-reg-label">
-                {t.lang === "ne" ? "दर्ता नं." : "Regd. No."}:
-              </span>{" "}
+              <span className="footer-reg-label">Registration No:</span>{" "}
               <strong>{org.registrationNo}</strong>{" "}
-              <span className="footer-reg-office">
-                ({t.lang === "ne" ? "जि.प्र.का. रसुवा" : "DAO Rasuwa"})
-              </span>
+              <span className="footer-reg-office">(DAO Rasuwa)</span>
             </p>
             <p className="footer-reg-item">
-              <span className="footer-reg-label">
-                {t.lang === "ne" ? "स.क.प. आबद्धता" : "SWC Affiliation"}:
-              </span>{" "}
+              <span className="footer-reg-label">SWC Affiliation:</span>{" "}
               <strong>{org.affiliationNo.split(" ")[0]}</strong>
             </p>
           </div>
         </div>
 
         <nav aria-label="Footer">
-          <h2>{t.footer.quickLinks}</h2>
+          <h2>Quick Links</h2>
           <ul>
             <li>
-              <Link to="/about">{t.nav.about}</Link>
+              <Link to="/about">About Us</Link>
             </li>
             <li>
-              <Link to="/programs">{t.nav.programs}</Link>
+              <Link to="/programs">Programs</Link>
             </li>
             <li>
-              <Link to="/notices">{t.nav.notices}</Link>
+              <Link to="/notices">Notices</Link>
             </li>
             <li>
-              <Link to="/resources">{t.nav.resources}</Link>
+              <Link to="/resources">Resources</Link>
             </li>
             <li>
-              <Link to="/accessibility">
-                {t.lang === "ne" ? "पहुँचयोग्यता" : "Accessibility"}
-              </Link>
+              <Link to="/accessibility">Accessibility</Link>
             </li>
             <li>
-              <Link to="/privacy">{t.lang === "ne" ? "गोपनीयता" : "Privacy"}</Link>
+              <Link to="/privacy">Privacy Policy</Link>
             </li>
             <li>
-              <Link to="/safeguarding">
-                {t.lang === "ne" ? "सुरक्षा तथा गुनासो" : "Safeguarding & feedback"}
-              </Link>
+              <Link to="/safeguarding">Safeguarding & Feedback</Link>
             </li>
           </ul>
         </nav>
 
         <div>
-          <h2>{t.footer.contactHeading}</h2>
+          <h2>Contact</h2>
           <p>
-            <span lang="ne">{org.wardNe}</span>
+            Naukunda Rural Municipality – 3, Parchyang
             <br />
-            <span lang="ne">{org.districtNe}</span>, {org.provinceEn}
+            Rasuwa District, Bagmati Province, Nepal
           </p>
           <p>
-            <a href={`tel:+977${org.phone}`}>{org.phone}</a>
+            <a href={`tel:+977${org.phone}`}>+977 {org.phone}</a>
             <br />
             <a href={`mailto:${org.email}`}>{org.email}</a>
           </p>
           {org.facebook ? (
             <p>
-              <a href={org.facebook}>{org.shortNameEn} on Facebook</a>
+              <a href={org.facebook} target="_blank" rel="noopener noreferrer">Model Disabled Society Rasuwa on Facebook</a>
             </p>
           ) : null}
         </div>
@@ -88,20 +76,14 @@ export default function Footer() {
 
       <div className="container footer-bottom">
         <p>
-          © {year} {org.shortNameEn}. {t.footer.rights}
+          © {year} {org.shortNameEn || "Model Disabled Society Rasuwa"}. All rights reserved.
         </p>
-        {/*
-          Per explicit client instruction: only the name "Suyog Dhungel" is a
-          hyperlink here (to his personal site) — the surrounding credit text
-          is plain, unlinked text either side of it.
-        */}
         <p className="footer-credit">
-          {t.footer.developedBy}{" "}
+          Developed and maintained by:{" "}
           <a
             href="https://www.suyogdhungel.com.np/"
             target="_blank"
             rel="noopener noreferrer"
-            lang="en"
           >
             Suyog Dhungel
           </a>
