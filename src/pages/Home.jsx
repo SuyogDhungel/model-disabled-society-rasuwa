@@ -33,11 +33,6 @@ export default function Home() {
       <section className="hero">
         <div className="container hero-grid">
           <div className="hero-copy">
-            <div className="hero-badge-wrap">
-              <span className="eyebrow">
-                Naukunda-3, Parchyang • Rasuwa District, Nepal
-              </span>
-            </div>
             <h1>
               Empowering Persons with Disabilities in Rasuwa
             </h1>
