@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="container site-footer-grid">
         <div>
           <h3 className="footer-org-name">{org.shortNameEn || org.nameEn || "Model Disabled Society Rasuwa"}</h3>
-          <p className="footer-tagline">Naukunda-3, Rasuwa, Bagmati Province, Nepal</p>
+          <p className="footer-tagline">{org.wardEn || "Naukunda-3, Rasuwa, Bagmati Province, Nepal"}</p>
           <div className="footer-reg-info">
             <p className="footer-reg-item">
               <span className="footer-reg-label">Registration No:</span>{" "}
@@ -57,9 +57,9 @@ export default function Footer() {
         <div>
           <h2>Contact</h2>
           <p>
-            Naukunda Rural Municipality – 3, Parchyang
+            {org.wardEn || "Naukunda Rural Municipality – 3, Parchyang"}
             <br />
-            Rasuwa District, Bagmati Province, Nepal
+            {org.districtEn || "Rasuwa District"}, {org.provinceEn || "Bagmati Province, Nepal"}
           </p>
           <p>
             <a href={`tel:+977${org.phone}`}>+977 {org.phone}</a>
