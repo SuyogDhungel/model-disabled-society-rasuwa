@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-hidden="true">
+  <rect width="800" height="500" fill="#edf3f8"/>
+  <circle cx="400" cy="200" r="90" fill="#075b9e" opacity="0.12"/>
+  <g stroke="#075b9e" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="400" cy="150" r="34" fill="#075b9e" opacity="0.9" stroke="none"/>
+    <path d="M330 260c14-38 42-58 70-58s56 20 70 58"/>
+    <path d="M230 330c20-70 90-110 170-110s150 40 170 110"/>
+  </g>
+  <text x="400" y="440" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" fill="#45525f">
+    Placeholder graphic — replace with a real photograph
+  </text>
+</svg>

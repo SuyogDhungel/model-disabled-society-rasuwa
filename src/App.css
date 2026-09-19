@@ -1,0 +1,735 @@
+/* ---------- Header ---------- */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.site-header-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-block: 0.85rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-right: auto;
+}
+
+/* Two separate, independently focusable links -- the logo carries its own
+   accessible name (aria-label + non-empty alt on the image) distinct from
+   the org-name text link beside it, rather than one link wrapping both. */
+.brand-logo-link,
+.brand-text-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text);
+  border-radius: var(--radius);
+}
+
+/* Visible keyboard focus on both links -- relies on the global
+   *:focus-visible rule in index.css (outline: var(--focus-ring)); this
+   just adds breathing room so the ring doesn't touch the logo artwork. */
+.brand-logo-link:focus-visible,
+.brand-text-link:focus-visible {
+  outline-offset: 3px;
+}
+
+.brand-mark {
+  flex: none;
+  display: flex;
+}
+
+.brand-mark img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brand-text > span:first-child {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.brand-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.site-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.nav-toggle:hover {
+  background: var(--surface-alt);
+}
+
+.primary-nav {
+  display: none;
+  width: 100%;
+  order: 3;
+}
+
+.primary-nav.is-open {
+  display: block;
+}
+
+.primary-nav ul {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
+}
+
+.primary-nav a {
+  display: block;
+  padding: 0.85rem 0.25rem;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  min-height: 44px;
+}
+
+.primary-nav a.is-active {
+  color: var(--accent);
+}
+
+.primary-nav a:hover {
+  color: var(--accent);
+}
+
+@media (min-width: 860px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .primary-nav {
+    display: block !important;
+    width: auto;
+    order: 2;
+  }
+
+  .primary-nav ul {
+    flex-direction: row;
+    gap: 1.5rem;
+    border-top: none;
+    margin: 0;
+  }
+
+  .primary-nav a {
+    padding: 0.5rem 0.1rem;
+  }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background: linear-gradient(180deg, var(--surface-alt), var(--background));
+  padding-block: 3rem;
+}
+
+.hero-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 860px) {
+  .hero-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+  margin: 0 0 0.5rem;
+}
+
+.hero-copy h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin: 0 0 0.75rem;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 42ch;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.hero-media img {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- Sections ---------- */
+.section {
+  padding-block: 2.5rem;
+}
+
+.section-alt {
+  background: var(--surface-alt);
+}
+
+.lede {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 68ch;
+}
+
+.card-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.card h2,
+.card h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+/* ---------- Generic inner pages ---------- */
+.page {
+  padding-block: 2.5rem 3.5rem;
+}
+
+.page h1 {
+  font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+}
+
+.section-block {
+  margin-top: 2rem;
+}
+
+.fact-list {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin: 1rem 0 0;
+}
+
+.fact-list > div {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  background: var(--surface);
+}
+
+.fact-list dt {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.fact-list dd {
+  margin: 0.2rem 0 0;
+  font-weight: 600;
+}
+
+.fine-print {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.objectives-list {
+  margin: 1rem 0 0;
+  padding-left: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.board-grid {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.board-card {
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1rem;
+  background: var(--surface);
+}
+
+.board-card-photo {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 0.75rem;
+  display: block;
+  background: var(--border);
+}
+
+.board-card-name {
+  font-weight: 700;
+  margin: 0;
+}
+
+.board-card-position {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0.15rem 0 0;
+}
+
+.notice-list,
+.resource-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.notice-list article {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.25rem;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Contact ---------- */
+.contact-grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 860px) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.map-frame {
+  width: 100%;
+  height: 260px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-top: 1rem;
+}
+
+.map-caption {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.form-note {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field label {
+  font-weight: 600;
+}
+
+.field input,
+.field textarea {
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 0.65rem 0.75rem;
+  font: inherit;
+  background: var(--surface);
+  color: var(--text);
+  min-height: 44px;
+}
+
+.field textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.field-error {
+  color: var(--danger);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.form-status {
+  min-height: 1.2em;
+  color: var(--good);
+  font-weight: 600;
+}
+
+/* ---------- Admin panel (private tool, English-only) ---------- */
+.admin-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.admin-signed-in-as {
+  color: var(--muted);
+  margin: 0.2rem 0 0;
+}
+
+.admin-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-nav a {
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.admin-nav a:hover {
+  background: var(--surface-alt);
+}
+
+.admin-nav a.is-active {
+  border-color: var(--border-strong);
+  background: var(--surface-alt);
+  color: var(--accent);
+}
+
+.admin-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.admin-list-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+}
+
+.admin-list-photo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--border);
+  flex: none;
+}
+
+.admin-list-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-list-name {
+  font-weight: 700;
+  margin: 0;
+}
+
+.admin-list-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0.15rem 0 0;
+}
+
+.admin-flag {
+  color: var(--focus);
+  font-weight: 600;
+}
+
+.admin-list-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex: none;
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.btn-danger:hover {
+  background: var(--danger);
+  color: #fff;
+}
+
+.admin-form {
+  max-width: 40rem;
+}
+
+.field-row {
+  display: grid;
+  gap: 1.1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.field-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 400;
+}
+
+.admin-current-photo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 0.5rem;
+}
+
+.admin-form-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--footer-background);
+  color: var(--footer-text);
+  margin-top: 3rem;
+}
+
+.site-footer a {
+  color: var(--footer-link);
+}
+
+.site-footer-grid {
+  display: grid;
+  gap: 2rem;
+  padding-block: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.site-footer h2 {
+  font-size: 1rem;
+  color: var(--footer-text);
+  margin-top: 0;
+}
+
+.site-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-org-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.1rem;
+}
+
+.footer-meta {
+  color: var(--footer-muted);
+  font-size: 0.9rem;
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--footer-border);
+  padding-block: 1rem;
+  font-size: 0.85rem;
+  color: var(--footer-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  justify-content: space-between;
+}
+
+.footer-credit {
+  margin: 0;
+}
+
+.footer-credit a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.footer-credit a:hover,
+.footer-credit a:focus-visible {
+  color: var(--accent);
+}
+
+/* ---------- Backend-editable content additions ---------- */
+
+/* Multi-paragraph text saved from a <textarea> keeps its line breaks. */
+.preserve-lines {
+  white-space: pre-line;
+}
+
+/* When no separate hero photo is set, Home.jsx falls back to showing the
+   organization logo in the hero slot -- constrain it instead of letting a
+   small square logo stretch to fill the full hero width. */
+.hero-media.hero-logo img {
+  max-width: 220px;
+  width: auto;
+  margin-inline: auto;
+  display: block;
+  border: none;
+}
+
+.card-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--border);
+}
+
+.attachment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field-help {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.field-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 400;
+}
+
+.admin-fieldset {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem 1.25rem;
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.admin-fieldset legend {
+  font-weight: 700;
+  padding: 0 0.4rem;
+}
+
+.admin-fieldset .admin-fieldset {
+  margin: 0;
+}
+
+.logo-preview-box {
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  padding: 1rem;
+  background: var(--surface-alt);
+}
+
+.preview-label {
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+}
+
+.logo-preview-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-preview-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: var(--radius);
+  background: var(--surface);
+  flex: none;
+}

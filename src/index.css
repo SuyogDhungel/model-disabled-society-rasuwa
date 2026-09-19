@@ -1,0 +1,215 @@
+/* Design tokens — reused from the studio's signature system (portfolio / blog / news portal),
+   re-tuned (not just inverted) for dark mode, with contrast checked against WCAG 2.2 AA. */
+:root {
+  --background: #f7f9fc;
+  --surface: #ffffff;
+  --surface-alt: #edf3f8;
+  --text: #15202b;
+  --muted: #45525f; /* darkened from the shared #506173 to clear 4.5:1 on --surface-alt as well as --surface */
+  --border: #c7d2df;
+  --border-strong: #8ea1b5;
+  --accent: #075b9e;
+  --accent-hover: #034a83;
+  --accent-contrast: #ffffff;
+  --focus: #b54708;
+  --danger: #9b1c1c;
+  --danger-hover: #7f1414;
+  --good: #14603a;
+  --good-bg: #e8f5ee;
+
+  --footer-background: #1d3442;
+  --footer-text: #f4f7f8;
+  --footer-muted: #c8d4da;
+  --footer-link: #9ed8ff;
+  --footer-border: #587383;
+
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Noto Sans Devanagari", "Noto Sans", Mangal, Arial, sans-serif;
+
+  --max-width: 72rem;
+  --radius: 6px;
+  --focus-ring: 3px solid var(--focus);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #0c1219;
+    --surface: #121b24;
+    --surface-alt: #182532;
+    --text: #f1f5f9;
+    --muted: #c2ccd6;
+    --border: #3b4c5e;
+    --border-strong: #64778b;
+    --accent: #84c5f4;
+    --accent-hover: #b9ddf8;
+    --accent-contrast: #07131d;
+    --focus: #ffbf47;
+    --danger: #ff9696;
+    --danger-hover: #ffc1c1;
+    --good: #7fd3a6;
+    --good-bg: #16281f;
+  }
+}
+
+:root[data-theme="dark"] {
+  --background: #0c1219;
+  --surface: #121b24;
+  --surface-alt: #182532;
+  --text: #f1f5f9;
+  --muted: #c2ccd6;
+  --border: #3b4c5e;
+  --border-strong: #64778b;
+  --accent: #84c5f4;
+  --accent-hover: #b9ddf8;
+  --accent-contrast: #07131d;
+  --focus: #ffbf47;
+  --danger: #ff9696;
+  --danger-hover: #ffc1c1;
+  --good: #7fd3a6;
+  --good-bg: #16281f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--text);
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Visible, high-contrast focus indicator on every focusable element —
+   the single most repeated failure across the nine audited NGO sites was
+   focus that was invisible, trapped, or absent entirely. */
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  z-index: 1000;
+  transition: top 0.15s ease;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.25rem;
+  min-height: 44px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  color: var(--accent-contrast);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-alt);
+  color: var(--text);
+}
+
+[lang="ne"] {
+  font-family: "Noto Sans Devanagari", var(--font-sans);
+}

@@ -1,0 +1,1 @@
+Place public JPEG, PNG or WebP files here, then use /images/your-image.webp in admin. Rebuild and deploy afterward. Recommended: hero 1600x1000; social 1200x630; portraits 400x400; logo 512x512. Never upload SVG from untrusted sources.
