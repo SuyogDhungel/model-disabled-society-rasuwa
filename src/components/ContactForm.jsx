@@ -2,21 +2,10 @@ import { useRef, useState } from "react";
 import { useLanguage } from "../context/LanguageContext.jsx";
 import { useSiteContent } from "../context/SiteContentContext.jsx";
 
+import { isSupabaseConfigured, supabase } from "../lib/supabaseClient.js";
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-/**
- * Every field here has its own unique id/label pair — Sabal Nepal's audit
- * (SBL-03) found all five Contact-form fields sharing one duplicated id, so
- * only the first field ever got a working label. BDS Nepal's Contact form
- * (BDS-07) failed outright because its CAPTCHA couldn't be completed with a
- * keyboard or NVDA at all, so this form uses an invisible honeypot field
- * instead of any interactive challenge.
- *
- * There is no backend wired up yet (see the delivery notes), so a valid
- * submission opens the visitor's own email app with the message pre-filled,
- * addressed to the organisation's real email address, rather than silently
- * pretending to have sent it.
- */
 export default function ContactForm() {
   const { t } = useLanguage();
   const { contact } = t;
@@ -25,6 +14,7 @@ export default function ContactForm() {
   const [values, setValues] = useState({ name: "", email: "", message: "", company: "" });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("");
+  const [submitting, setSubmitting] = useState(false);
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const messageRef = useRef(null);
@@ -35,23 +25,21 @@ export default function ContactForm() {
 
   function validate() {
     const next = {};
-    if (!values.name.trim()) next.name = "Please enter your name.";
+    if (!values.name.trim()) next.name = t.lang === "ne" ? "कृपया आफ्नो नाम लेख्नुहोस्।" : "Please enter your name.";
     if (!values.email.trim()) {
-      next.email = "Please enter your email address.";
+      next.email = t.lang === "ne" ? "कृपया आफ्नो इमेल ठेगाना लेख्नुहोस्।" : "Please enter your email address.";
     } else if (!EMAIL_RE.test(values.email.trim())) {
-      next.email = "Please enter a valid email address.";
+      next.email = t.lang === "ne" ? "कृपया मान्य इमेल ठेगाना लेख्नुहोस्।" : "Please enter a valid email address.";
     }
-    if (!values.message.trim()) next.message = "Please enter a message.";
+    if (!values.message.trim()) next.message = t.lang === "ne" ? "कृपया सन्देश लेख्नुहोस्।" : "Please enter a message.";
     return next;
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    // Honeypot: real visitors never see or fill this field. If it has a
-    // value, quietly drop the submission rather than pretending it worked.
     if (values.company) {
-      setStatus("Thank you.");
+      setStatus(t.lang === "ne" ? "धन्यवाद।" : "Thank you.");
       return;
     }
 
@@ -71,15 +59,45 @@ export default function ContactForm() {
       return;
     }
 
-    const subject = encodeURIComponent(`Message from ${values.name} via the website`);
+    setSubmitting(true);
+
+    if (isSupabaseConfigured) {
+      try {
+        const { error } = await supabase.from("contact_messages").insert([
+          {
+            name: values.name.trim(),
+            email: values.email.trim(),
+            message: values.message.trim(),
+          },
+        ]);
+        if (!error) {
+          setStatus(
+            t.lang === "ne"
+              ? "तपाईंको सन्देश सफलतापूर्वक पठाइयो। धन्यवाद!"
+              : "Your message has been sent successfully. Thank you!"
+          );
+          setValues({ name: "", email: "", message: "", company: "" });
+          setSubmitting(false);
+          return;
+        }
+      } catch (err) {
+        console.error("Failed to save contact message:", err);
+      }
+    }
+
+    const subject = encodeURIComponent(`Message from ${values.name} via Model Disabled Society Rasuwa website`);
     const body = encodeURIComponent(`${values.message}\n\n— ${values.name} (${values.email})`);
     window.location.href = `mailto:${orgEmail}?subject=${subject}&body=${body}`;
-    setStatus(`Opening your email app to send this to ${orgEmail}.`);
+    setStatus(
+      t.lang === "ne"
+        ? `इमेल पठाउनको लागि तपाईंको इमेल एप खोलिँदै छ (${orgEmail})।`
+        : `Opening your email application to send this to ${orgEmail}.`
+    );
+    setSubmitting(false);
   }
 
   return (
     <form noValidate onSubmit={handleSubmit} className="contact-form">
-      <p className="form-note">{contact.formNote}</p>
 
       <div className="field">
         <label htmlFor="contact-name">{contact.formName}</label>
@@ -155,8 +173,8 @@ export default function ContactForm() {
         />
       </div>
 
-      <button type="submit" className="btn btn-primary">
-        {contact.formSubmit}
+      <button type="submit" className="btn btn-primary" disabled={submitting}>
+        {submitting ? (t.lang === "ne" ? "पठाउँदै..." : "Sending...") : contact.formSubmit}
       </button>
 
       <p aria-live="polite" className="form-status">

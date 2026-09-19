@@ -33,23 +33,17 @@ export default function Home() {
       <section className="hero">
         <div className="container hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">
-              <Localized item={content.home} field="eyebrow" lang={lang} as="span" />
-            </p>
+            <div className="hero-badge-wrap">
+              <span className="eyebrow">
+                <Localized item={content.home} field="eyebrow" lang={lang} as="span" />
+              </span>
+            </div>
             <h1>
               <Localized item={content.home} field="title" lang={lang} as="span" />
             </h1>
             <p className="hero-subtitle">
               <Localized item={content.home} field="subtitle" lang={lang} as="span" />
             </p>
-            <div className="hero-actions">
-              <Link className="btn btn-primary" to="/about">
-                {home.ctaPrimary}
-              </Link>
-              <Link className="btn btn-secondary" to="/contact">
-                {home.ctaSecondary}
-              </Link>
-            </div>
           </div>
           <div
             className={"hero-media" + (!content.appearance.heroImageUrl ? " hero-logo" : "")}

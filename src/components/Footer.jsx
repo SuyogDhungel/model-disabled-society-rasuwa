@@ -16,11 +16,23 @@ export default function Footer() {
             {org.nameNe}
           </p>
           <p>{org.shortNameEn}</p>
-          <p className="footer-meta">
-            {t.footer.registered} — {org.registrationNo}
-            <br />
-            {t.footer.affiliated} — {org.affiliationNo}
-          </p>
+          <div className="footer-reg-info">
+            <p className="footer-reg-item">
+              <span className="footer-reg-label">
+                {t.lang === "ne" ? "दर्ता नं." : "Regd. No."}:
+              </span>{" "}
+              <strong>{org.registrationNo}</strong>{" "}
+              <span className="footer-reg-office">
+                ({t.lang === "ne" ? "जि.प्र.का. रसुवा" : "DAO Rasuwa"})
+              </span>
+            </p>
+            <p className="footer-reg-item">
+              <span className="footer-reg-label">
+                {t.lang === "ne" ? "स.क.प. आबद्धता" : "SWC Affiliation"}:
+              </span>{" "}
+              <strong>{org.affiliationNo.split(" ")[0]}</strong>
+            </p>
+          </div>
         </div>
 
         <nav aria-label="Footer">

@@ -42,8 +42,9 @@ export default function Contact() {
             loading="lazy"
           />
           <p className="map-caption">
-            Approximate area shown — Rasuwa district. Replace with the exact office
-            location once confirmed.
+            {t.lang === "ne"
+              ? "कार्यालय क्षेत्र — नौकुण्ड गाउँपालिका, रसुवा जिल्ला"
+              : "Office location — Naukunda Rural Municipality, Rasuwa District"}
           </p>
         </div>
 

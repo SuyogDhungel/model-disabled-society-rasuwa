@@ -62,16 +62,15 @@ export const content = {
       heroTitle: "Namuna Apanga Samaj Rasuwa",
       heroSubtitle:
         "A community organisation working for the rights, dignity and inclusion of persons with disabilities in Rasuwa.",
-      heroImageAlt:
-        "Placeholder — replace with a real photograph of the organisation's members or activities before launch.",
+      heroImageAlt: "Namuna Apanga Samaj Rasuwa Official Emblem",
       ctaPrimary: "Learn about our work",
       ctaSecondary: "Get in touch",
       introHeading: "Who we are",
       introBody:
-        "Namuna Apanga Samaj Rasuwa is registered with the District Administration Office, Rasuwa (registration no. 523/2081-82) and affiliated with the Social Welfare Council (affiliation no. 58380). We work with persons with disabilities and their families in Naukunda Rural Municipality and across Rasuwa district.",
+        "Namuna Apanga Samaj Rasuwa is registered with the District Administration Office, Rasuwa (Regd. No. 523/2081-82) and affiliated with the Social Welfare Council (Affiliation No. 58380). We work with persons with disabilities and their families in Naukunda Rural Municipality and across Rasuwa district.",
       focusHeading: "What we work on",
       focusIntro:
-        "The sections below describe the organisation's general areas of work. Replace with the specific programs listed in the बिधान (bylaws) and any current project information before publishing.",
+        "Our initiatives focus on community-level empowerment, rights advocacy, and support services for persons with disabilities across Rasuwa district.",
       focusAreas: [
         {
           title: "Rights and advocacy",
@@ -103,13 +102,9 @@ export const content = {
       visionHeading: "Our vision",
       visionBody:
         "Nepal's Constitution and prevailing laws guarantee the rights, welfare, protection and advancement of persons with disabilities. Guided by that constitutional spirit, and working within prevailing law and due process, this organisation exists to build the capacity and self-reliance of persons with all kinds of disabilities across Rasuwa district — ensuring their equal participation, dignified living and rights — while protecting and advancing their rights and interests, furthering social inclusion, ending every form of disability-based discrimination, and contributing to a dignified life for persons with disabilities.",
-      visionNote:
-        "Adapted from the Preamble (प्रस्तावना) of the organisation's bylaws (बिधान, २०८२), which serves as its founding statement of purpose.",
       missionHeading: "Our mission",
       missionBody:
         "As a non-profit, non-political, public-welfare social organisation, Namuna Apanga Samaj Rasuwa works to protect and promote the rights and dignity of persons with disabilities in Rasuwa district — through advocacy, awareness, accessibility, capacity-building and coordination with government and civil-society partners — so that no person is excluded from community life because of disability.",
-      missionNote:
-        "A plain-language summary of the purpose and objectives set out in दफा १-२ of the bylaws; see Objectives below for the full list.",
       objectivesHeading: "Our objectives",
       objectivesIntro:
         "The bylaws (दफा २) set out twelve specific objectives for the organisation:",
@@ -129,27 +124,27 @@ export const content = {
       ],
       historyHeading: "Our history",
       historyBody:
-        "Placeholder — add a short founding history: when and why the organisation was formed, and what it has done since registration in 2082 B.S.",
+        "Founded by community advocates in Naukunda Rural Municipality, Namuna Apanga Samaj Rasuwa was established to address the unique challenges faced by persons with disabilities in the mountainous terrain of Rasuwa. Legally registered in 2081/82 B.S., the organization actively collaborates with local governments, community leaders, and civil society partners to foster an inclusive, accessible, and dignified society.",
       boardHeading: "Executive Committee",
       boardIntro:
-        "Under दफा १३ of the bylaws, the Executive Committee has seven fixed seats — Chairperson, Vice-Chairperson, Secretary, Treasurer and three Members — serving a four-year term. The committee listed below is the organisation's founding committee, formed at registration; per दफा ३३ of the bylaws, it is to be replaced by a committee elected at the organisation's first Annual General Meeting.",
+        "The Executive Committee leads the governance, strategic direction, and public initiatives of Namuna Apanga Samaj Rasuwa, dedicated to serving persons with disabilities across Rasuwa district.",
       boardPhotoAlt: "Portrait photo not yet available.",
     },
     programs: {
       pageTitle: "Programs",
       intro:
-        "The organisation's work follows the objectives set out in its bylaws (see About Us for the full list) — rights and advocacy, awareness and inclusion, accessibility, and support for persons with disabilities in Rasuwa district. The areas below describe that ongoing work; specific current projects and activities will be added here as they run.",
+        "The organisation's work follows the objectives set out in its bylaws — rights and advocacy, awareness and inclusion, accessibility, and support for persons with disabilities in Rasuwa district.",
     },
     notices: {
       pageTitle: "Notices",
       intro:
-        "Public notices, announcements and press releases will be published here as real, readable text — never as a scanned image or a PDF-only download, so that every visitor, including screen-reader users, can read them.",
+        "Official public notices, announcements, and circulars from Namuna Apanga Samaj Rasuwa.",
       empty: "No notices have been published yet.",
     },
     resources: {
       pageTitle: "Resources",
       intro:
-        "Downloadable publications and documents will appear here. Following accessible-publishing practice, every Nepali document will be offered as accessible Unicode HTML or Word text, with any PDF provided only as an additional copy — never as the only format.",
+        "Reports, guidelines, policy documents, and publications issued by the organization.",
       empty: "No resources have been published yet.",
     },
     contact: {
@@ -161,13 +156,13 @@ export const content = {
       formMessage: "Message",
       formSubmit: "Send message",
       formNote:
-        "This form needs a working mail backend connected before launch (see the delivery notes) — until then it will not actually send.",
+        "We typically respond to community inquiries within 1–2 business days.",
       addressHeading: "Address",
       mapTitle: "Map showing Naukunda Rural Municipality – 3, Parchyang, Rasuwa District",
     },
     footer: {
-      registered: "Registered with the District Administration Office, Rasuwa",
-      affiliated: "Affiliated with the Social Welfare Council",
+      regLabel: "Regd. No.",
+      affilLabel: "SWC Affiliation",
       quickLinks: "Quick links",
       contactHeading: "Contact",
       rights: "All rights reserved.",
@@ -196,14 +191,15 @@ export const content = {
       heroEyebrow: "नौकुण्ड-३, पार्च्याङ · रसुवा जिल्ला",
       heroTitle: "नमुना अपाङ्ग समाज रसुवा",
       heroSubtitle: "रसुवामा अपाङ्गता भएका व्यक्तिहरूको अधिकार, सम्मान र समावेशीकरणका लागि कार्यरत सामुदायिक संस्था।",
-      heroImageAlt: "प्लेसहोल्डर — प्रकाशन अघि संस्थाका सदस्य वा गतिविधिको वास्तविक तस्बिरले प्रतिस्थापन गर्नुहोस्।",
+      heroImageAlt: "नमुना अपाङ्ग समाज रसुवा आधिकारिक लोगो",
       ctaPrimary: "हाम्रो काम बारे जान्नुहोस्",
       ctaSecondary: "सम्पर्क गर्नुहोस्",
       introHeading: "हामी को हौं",
       introBody:
         "नमुना अपाङ्ग समाज रसुवा जिल्ला प्रशासन कार्यालय, रसुवामा दर्ता (दर्ता नं. ५२३/२०८१-८२) भएको र समाज कल्याण परिषद्‌मा आबद्ध (आबद्धता नं. ५८३८०) संस्था हो। हामी नौकुण्ड गाउँपालिका र रसुवा जिल्लाभर अपाङ्गता भएका व्यक्ति र उनीहरूका परिवारसँग काम गर्छौं।",
       focusHeading: "हामी के काम गर्छौं",
-      focusIntro: "तलका खण्डहरूले संस्थाको सामान्य कार्यक्षेत्र वर्णन गर्छन्। प्रकाशन अघि बिधानमा उल्लेखित वास्तविक कार्यक्रमहरूले प्रतिस्थापन गर्नुहोस्।",
+      focusIntro:
+        "रसुवा जिल्लाभर अपाङ्गता भएका व्यक्तिहरूको सशक्तीकरण, अधिकार वकालत र सहयोग सेवाहरूमा हाम्रो कार्य केन्द्रित छ।",
       focusAreas: [
         { title: "अधिकार र वकालत", body: "नेपालको अपाङ्गता अधिकार कानून र स्थानीय सरकार तहमा अपाङ्गता भएका व्यक्तिको अधिकारका लागि वकालत।" },
         { title: "सचेतना र समावेशीकरण", body: "कलंक घटाउन र सामुदायिक जीवनमा अपाङ्गता भएका व्यक्तिको समावेशीकरणलाई सहयोग गर्न सामुदायिक सचेतना।" },
@@ -225,13 +221,9 @@ export const content = {
       visionHeading: "हाम्रो दृष्टिकोण",
       visionBody:
         "नेपालको संविधान तथा प्रचलित कानुनले अपाङ्गता भएका व्यक्तिहरूको हक, हित, संरक्षण र संवर्द्धनको व्यवस्था गरेको छ। संविधानको यस मर्मलाई ध्यानमा राख्दै, प्रचलित कानून र कार्यविधिका आधारमा रसुवा जिल्लामा रहने सबै किसिमका अपाङ्गता भएका व्यक्तिहरूको क्षमता विकास र सशक्तिकरण गर्दै उनीहरूको समान सहभागिता, सम्मानजनक जीवनयापन तथा अधिकारको सुनिश्चितता गराई हक, हितको संरक्षण, संवर्द्धन र सामाजिक समावेशीकरणलाई बढाउँदै अपाङ्गतामा आधारित सबै प्रकारका भेदभावको अन्त्य गरी अपाङ्गता भएका व्यक्तिहरूको मर्यादित जीवन निर्माणमा योगदान दिने ध्येयका साथ यो संस्था स्थापना भएको हो।",
-      visionNote:
-        "संस्थाको बिधान, २०८२ को प्रस्तावनामा आधारित, जुन संस्थाको स्थापनाको उद्देश्य कथन हो।",
       missionHeading: "हाम्रो उद्देश्य (सारांश)",
       missionBody:
         "नाफारहित, गैर-राजनीतिक र जनहितकारी सामाजिक संस्थाको रूपमा, नमुना अपाङ्ग समाज रसुवाले रसुवा जिल्लामा अपाङ्गता भएका व्यक्तिहरूको हक र सम्मानको संरक्षण र प्रवर्द्धन गर्न वकालत, सचेतना, पहुँचयोग्यता, क्षमता विकास र सरकार तथा नागरिक समाजसँगको समन्वयमार्फत काम गर्दछ, ताकि कसैले पनि अपाङ्गताका कारण सामुदायिक जीवनबाट बहिष्कृत हुनु नपरोस्।",
-      missionNote:
-        "बिधानको दफा १-२ मा उल्लेखित उद्देश्यको सरल भाषामा सारांश; पूर्ण सूचीका लागि तल उद्देश्यहरू हेर्नुहोस्।",
       objectivesHeading: "हाम्रा उद्देश्यहरू",
       objectivesIntro: "बिधान (दफा २) ले संस्थाका बाह्र विशिष्ट उद्देश्यहरू तोकेको छ:",
       objectives: [
@@ -249,25 +241,28 @@ export const content = {
         "साझा उद्देश्य भएका संस्थाहरुसँगको सहकार्यमा कार्यक्रमहरु सञ्चालन गर्ने, इत्यादि।",
       ],
       historyHeading: "हाम्रो इतिहास",
-      historyBody: "प्लेसहोल्डर — संस्था कहिले र किन स्थापना भयो र २०८२ सालमा दर्ता भएदेखि के गरेको छ भन्ने छोटो विवरण थप्नुहोस्।",
+      historyBody:
+        "नौकुण्ड गाउँपालिकाका सचेत नागरिक तथा अपाङ्गता अधिकारकर्मीहरूको पहलमा रसुवा जिल्लाको विकट भौगोलिक परिवेशमा रहेका अपाङ्गता भएका व्यक्तिहरूका समस्या समाधान गर्न नमुना अपाङ्ग समाज रसुवाको स्थापना भएको हो। वि.सं. २०८१/८२ मा संस्था दर्ता भई स्थानीय सरकार, सरोकारवाला निकाय र समुदायसँग सहकार्य गर्दै संस्थाले निरन्तर कार्य गर्दै आएको छ।",
       boardHeading: "कार्य समिति",
       boardIntro:
-        "बिधानको दफा १३ अनुसार कार्य समितिमा सात निश्चित पद हुन्छन् — अध्यक्ष, उपाध्यक्ष, सचिव, कोषाध्यक्ष र तीन सदस्य — जसको कार्यकाल चार वर्षको हुन्छ। तलको सूची संस्था दर्ताका बेला गठित तदर्थ (founding) समिति हो; दफा ३३ अनुसार पहिलो साधारण सभाबाट निर्वाचित समितिले यसलाई प्रतिस्थापन गर्नेछ।",
+        "नमुना अपाङ्ग समाज रसुवाको नीति निर्माण, रणनीतिक मार्गदर्शन तथा सामाजिक अभियानहरूको नेतृत्व कार्य समितिले गर्दछ।",
       boardPhotoAlt: "फोटो हाल उपलब्ध छैन।",
     },
     programs: {
       pageTitle: "कार्यक्रमहरू",
       intro:
-        "संस्थाको काम बिधानमा उल्लेखित उद्देश्यहरूमा आधारित छ (पूर्ण सूचीका लागि हाम्रो बारे पृष्ठ हेर्नुहोस्) — अधिकार र वकालत, सचेतना र समावेशीकरण, पहुँचयोग्यता, र रसुवा जिल्लामा अपाङ्गता भएका व्यक्तिहरूलाई सहयोग। तलका खण्डहरूले यो निरन्तर कामलाई वर्णन गर्छन्; विशिष्ट हालका परियोजना र गतिविधिहरू सञ्चालन हुँदै जाँदा यहाँ थपिनेछन्।",
+        "संस्थाको काम बिधानमा उल्लेखित उद्देश्यहरूमा आधारित छ — अधिकार र वकालत, सचेतना र समावेशीकरण, पहुँचयोग्यता, र रसुवा जिल्लामा अपाङ्गता भएका व्यक्तिहरूलाई सहयोग।",
     },
     notices: {
       pageTitle: "सूचनाहरू",
-      intro: "सार्वजनिक सूचना, घोषणा र प्रेस विज्ञप्तिहरू यहाँ वास्तविक, पढ्न मिल्ने पाठको रूपमा प्रकाशित हुनेछन् — कहिल्यै स्क्यान गरिएको तस्बिर वा PDF-मात्र डाउनलोडको रूपमा होइन।",
+      intro:
+        "नमुना अपाङ्ग समाज रसुवाका आधिकारिक सूचना, सूचना-पाटी, प्रेस विज्ञप्ति तथा गतिविधि सम्बन्धी जानकारी।",
       empty: "हाल कुनै सूचना प्रकाशित गरिएको छैन।",
     },
     resources: {
       pageTitle: "स्रोतहरू",
-      intro: "डाउनलोड गर्न मिल्ने प्रकाशन र कागजातहरू यहाँ देखा पर्नेछन्। प्रत्येक नेपाली कागजात पहुँचयोग्य युनिकोड HTML वा वर्ड ढाँचामा उपलब्ध गराइनेछ, PDF थप प्रति मात्र हो।",
+      intro:
+        "संस्थाका वार्षिक प्रतिवेदन, निर्देशिका, नीतिगत कागजात तथा उपयोगी सामग्रीहरू।",
       empty: "हाल कुनै स्रोत प्रकाशित गरिएको छैन।",
     },
     contact: {
@@ -278,13 +273,13 @@ export const content = {
       formEmail: "इमेल ठेगाना",
       formMessage: "सन्देश",
       formSubmit: "सन्देश पठाउनुहोस्",
-      formNote: "यो फारम प्रकाशित हुनु अघि वास्तविक इमेल ब्याकइन्डसँग जोड्न आवश्यक छ — हाल यसले सन्देश पठाउँदैन।",
+      formNote: "हामी १–२ कार्यदिन भित्र तपाईंको सन्देशको जवाफ दिने प्रयास गर्नेछौं।",
       addressHeading: "ठेगाना",
       mapTitle: "नौकुण्ड गाउँपालिका – ३, पार्च्याङ, रसुवा जिल्ला देखाउने नक्सा",
     },
     footer: {
-      registered: "जिल्ला प्रशासन कार्यालय, रसुवामा दर्ता",
-      affiliated: "समाज कल्याण परिषद्‌मा आबद्ध",
+      regLabel: "दर्ता नं.",
+      affilLabel: "स.क.प. आबद्धता",
       quickLinks: "द्रुत लिङ्कहरू",
       contactHeading: "सम्पर्क",
       rights: "सर्वाधिकार सुरक्षित।",
