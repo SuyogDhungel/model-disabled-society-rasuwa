@@ -4,12 +4,6 @@ import { content } from "../data/content";
 const LanguageContext = createContext(null);
 
 function readStoredLang() {
-  try {
-    const stored = window.localStorage.getItem("ngo-site-lang");
-    if (stored === "en" || stored === "ne") return stored;
-  } catch {
-    /* localStorage unavailable — fall through to default */
-  }
   return "en";
 }
 

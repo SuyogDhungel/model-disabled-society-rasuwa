@@ -42,12 +42,12 @@ export default function Header() {
   }, [isOpen]);
 
   const links = [
-    { to: "/", label: t.nav.home, end: true },
-    { to: "/about", label: t.nav.about },
-    { to: "/programs", label: t.nav.programs },
-    { to: "/notices", label: t.nav.notices },
-    { to: "/resources", label: t.nav.resources },
-    { to: "/contact", label: t.nav.contact },
+    { to: "/", label: "Home", end: true },
+    { to: "/about", label: "About Us" },
+    { to: "/programs", label: "Programs" },
+    { to: "/notices", label: "Notices" },
+    { to: "/resources", label: "Resources" },
+    { to: "/contact", label: "Contact" },
   ];
 
   return (
