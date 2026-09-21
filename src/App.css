@@ -845,3 +845,44 @@
   background: var(--surface);
   flex: none;
 }
+
+/* ---------- Social Icons ---------- */
+.social-links,
+.footer-socials,
+.contact-socials {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.footer-socials {
+  margin-top: 0.85rem;
+}
+
+.social-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text, #f8fafc);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.social-icon-btn:hover {
+  background: var(--brand, #38bdf8);
+  color: #0f172a;
+  border-color: var(--brand, #38bdf8);
+  transform: translateY(-2px);
+}
+
+.social-icon-btn svg {
+  width: 18px;
+  height: 18px;
+}
+

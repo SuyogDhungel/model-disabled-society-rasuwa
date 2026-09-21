@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext.jsx";
 import { useSiteContent } from "../context/SiteContentContext.jsx";
 
+import SocialIcons from "./SocialIcons.jsx";
+
 export default function Footer() {
   const { t } = useLanguage();
   const { content } = useSiteContent();
@@ -62,15 +64,9 @@ export default function Footer() {
             {org.districtEn || "Rasuwa District"}, {org.provinceEn || "Bagmati Province, Nepal"}
           </p>
           <p>
-            <a href={`tel:+977${org.phone}`}>+977 {org.phone}</a>
-            <br />
             <a href={`mailto:${org.email}`}>{org.email}</a>
           </p>
-          {org.facebook ? (
-            <p>
-              <a href={org.facebook} target="_blank" rel="noopener noreferrer">Model Disabled Society Rasuwa on Facebook</a>
-            </p>
-          ) : null}
+          <SocialIcons org={org} className="footer-socials" />
         </div>
       </div>
 

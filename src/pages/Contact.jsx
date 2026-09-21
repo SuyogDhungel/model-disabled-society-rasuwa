@@ -2,6 +2,7 @@ import { useLanguage } from "../context/LanguageContext.jsx";
 import { useSiteContent } from "../context/SiteContentContext.jsx";
 import { usePageTitle } from "../hooks/usePageTitle.js";
 import ContactForm from "../components/ContactForm.jsx";
+import SocialIcons from "../components/SocialIcons.jsx";
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -25,10 +26,11 @@ export default function Contact() {
             {org.districtEn || "Rasuwa District"}, {org.provinceEn || "Bagmati Province, Nepal"}
           </p>
           <p>
-            <a href={`tel:+977${org.phone}`}>+977 {org.phone}</a>
-            <br />
             <a href={`mailto:${org.email}`}>{org.email}</a>
           </p>
+          <div style={{ marginTop: "1rem", marginBottom: "1.5rem" }}>
+            <SocialIcons org={org} className="contact-socials" />
+          </div>
 
           <iframe
             title={contact.mapTitle || "Map of Rasuwa District"}

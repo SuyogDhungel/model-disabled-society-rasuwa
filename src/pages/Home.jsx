@@ -52,11 +52,6 @@ export default function Home() {
       <section className="section">
         <div className="container">
           <h2>About the Organization</h2>
-          <div className="intro-badge-row">
-            <span className="info-badge"><strong>Regd. No:</strong> {org.registrationNo || "523/2081-82"} (DAO Rasuwa)</span>
-            <span className="info-badge"><strong>SWC Affiliation:</strong> {org.affiliationNo ? org.affiliationNo.split(" ")[0] : "58380"}</span>
-            <span className="info-badge"><strong>Location:</strong> {org.wardEn ? `${org.wardEn.split("–")[1]?.trim() || org.wardEn}, Rasuwa` : "Naukunda-3, Parchyang, Rasuwa"}</span>
-          </div>
           <p className="lede preserve-lines">
             {content.home?.introEn || "Model Disabled Society Rasuwa is a non-profit community organization legally registered with the District Administration Office (DAO), Rasuwa and affiliated with the Social Welfare Council (SWC). Headquartered in Naukunda Rural Municipality – 3, Parchyang, we work collaboratively with persons with disabilities, their families, local governments, and civil society partners to provide assistive referrals, champion disability rights, and build self-reliant, inclusive communities across Rasuwa District."}
           </p>

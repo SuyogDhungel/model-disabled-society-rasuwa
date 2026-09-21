@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAdminContent } from "../../hooks/useAdminContent.js";
 import { uploadFile } from "../../lib/uploadFile.js";
 import defaultLogo from "../../assets/org-logo.png";
+import { SOCIAL_PLATFORMS, getPlatformIcon } from "../../components/SocialIcons.jsx";
 
 function Group({ title, children }) {
   return (
@@ -18,6 +19,8 @@ export default function AdminSettings() {
   const [logoUploading, setLogoUploading] = useState(false);
   const [heroUploading, setHeroUploading] = useState(false);
   const [socialUploading, setSocialUploading] = useState(false);
+  const [newPlatform, setNewPlatform] = useState("facebook");
+  const [newSocialUrl, setNewSocialUrl] = useState("");
 
   const update = (section, key, value) =>
     setContent((c) => ({ ...c, [section]: { ...c[section], [key]: value } }));
@@ -41,6 +44,36 @@ export default function AdminSettings() {
     } finally {
       setUploading(false);
     }
+  }
+
+  function addSocialProfile() {
+    if (!newSocialUrl.trim()) return;
+    const currentList = Array.isArray(org.socials)
+      ? [...org.socials]
+      : org.facebook
+      ? [{ id: "fb-default", platform: "facebook", url: org.facebook }]
+      : [];
+    const updated = [
+      ...currentList,
+      { id: "soc-" + Date.now(), platform: newPlatform, url: newSocialUrl.trim() },
+    ];
+    update("organization", "socials", updated);
+    if (newPlatform === "facebook") {
+      update("organization", "facebook", newSocialUrl.trim());
+    }
+    setNewSocialUrl("");
+  }
+
+  function removeSocialProfile(id) {
+    const currentList = Array.isArray(org.socials)
+      ? [...org.socials]
+      : org.facebook
+      ? [{ id: "fb-default", platform: "facebook", url: org.facebook }]
+      : [];
+    const updated = currentList.filter((s) => s.id !== id);
+    update("organization", "socials", updated);
+    const fb = updated.find((s) => s.platform === "facebook");
+    update("organization", "facebook", fb ? fb.url : "");
   }
 
   async function handleSubmit(e) {
@@ -172,12 +205,84 @@ export default function AdminSettings() {
               <input id="email" type="email" value={org.email} onChange={(e) => update("organization", "email", e.target.value)} />
             </div>
             <div className="field">
-              <label htmlFor="facebook">Facebook page</label>
-              <input id="facebook" type="url" value={org.facebook} onChange={(e) => update("organization", "facebook", e.target.value)} />
-            </div>
-            <div className="field">
               <label htmlFor="domain">Domain</label>
               <input id="domain" value={org.domain} onChange={(e) => update("organization", "domain", e.target.value)} />
+            </div>
+          </div>
+
+          <div style={{ marginTop: "1.5rem", padding: "1rem", background: "rgba(255,255,255,0.03)", borderRadius: "8px", border: "1px solid var(--border, #333)" }}>
+            <h4 style={{ margin: "0 0 0.5rem 0", fontSize: "1.05rem" }}>Social Media Profiles</h4>
+            <p className="field-help" style={{ marginBottom: "1rem" }}>
+              Add links for Facebook, Instagram, TikTok, LinkedIn, YouTube, X, WhatsApp, etc. Their official icons will automatically appear on the website.
+            </p>
+
+            <div style={{ display: "flex", gap: "0.75rem", alignItems: "flex-end", flexWrap: "wrap", marginBottom: "1rem" }}>
+              <div className="field" style={{ minWidth: "150px", marginBottom: 0 }}>
+                <label htmlFor="platform-select">Platform</label>
+                <select id="platform-select" value={newPlatform} onChange={(e) => setNewPlatform(e.target.value)}>
+                  {SOCIAL_PLATFORMS.map((p) => (
+                    <option key={p.id} value={p.id}>{p.name}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="field" style={{ flex: "1", minWidth: "220px", marginBottom: 0 }}>
+                <label htmlFor="platform-url">URL / Profile link</label>
+                <input
+                  id="platform-url"
+                  type="url"
+                  placeholder="https://..."
+                  value={newSocialUrl}
+                  onChange={(e) => setNewSocialUrl(e.target.value)}
+                />
+              </div>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={addSocialProfile}
+                style={{ height: "42px" }}
+              >
+                + Add Profile
+              </button>
+            </div>
+
+            <div className="admin-social-list">
+              {(Array.isArray(org.socials) && org.socials.length > 0
+                ? org.socials
+                : org.facebook
+                ? [{ id: "fb-default", platform: "facebook", url: org.facebook }]
+                : []
+              ).map((item) => (
+                <div
+                  key={item.id}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    padding: "0.6rem 0.8rem",
+                    background: "rgba(255,255,255,0.06)",
+                    borderRadius: "6px",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+                    <span style={{ display: "inline-flex", color: "var(--brand, #38bdf8)" }}>
+                      {getPlatformIcon(item.platform)}
+                    </span>
+                    <strong>{SOCIAL_PLATFORMS.find((p) => p.id === item.platform)?.name || item.platform}</strong>
+                    <a href={item.url} target="_blank" rel="noopener noreferrer" className="meta" style={{ wordBreak: "break-all" }}>
+                      {item.url}
+                    </a>
+                  </div>
+                  <button
+                    type="button"
+                    className="btn btn-danger"
+                    onClick={() => removeSocialProfile(item.id)}
+                    style={{ padding: "0.2rem 0.6rem", fontSize: "0.85rem" }}
+                  >
+                    Delete
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
           <div className="field-row">
