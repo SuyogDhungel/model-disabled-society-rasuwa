@@ -93,12 +93,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="container">
-          <h2>{home.noticesHeading}</h2>
-          {noticesLoading ? null : latestNotices.length === 0 ? (
-            <p>{home.noticesEmpty}</p>
-          ) : (
+      {!noticesLoading && latestNotices.length > 0 ? (
+        <section className="section">
+          <div className="container">
+            <h2>{home.noticesHeading}</h2>
             <ul className="notice-list">
               {latestNotices.map((notice) => (
                 <li key={notice.id}>
@@ -111,12 +109,12 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-          )}
-          <Link className="btn btn-secondary" to="/notices">
-            {home.viewAllNotices}
-          </Link>
-        </div>
-      </section>
+            <Link className="btn btn-secondary" to="/notices">
+              {home.viewAllNotices}
+            </Link>
+          </div>
+        </section>
+      ) : null}
     </>
   );
 }
