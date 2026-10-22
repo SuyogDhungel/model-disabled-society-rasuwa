@@ -180,3 +180,19 @@ until you re-share the link).
 - Confirm the committee members still flagged as unverified (see above).
 - Add real photos of the organisation's members/activities once available,
   via Site settings → Homepage, or per-item images on Programs/Notices.
+
+## Posting an activity (news with photos)
+
+Use this after a training, workshop or event is completed (e.g. "MDSR completes 30-day computer training").
+
+1. **One-time setup:** in Supabase → SQL Editor, run `supabase/activities-migration.sql` once. It adds the save-time checks and the four starting activities. (A brand-new project only needs `supabase/schema.sql`.)
+2. Sign in at `/admin` → **Activities** → **+ Add new activity**. Works on a phone.
+3. Fill in:
+   - **Title** — what was done.
+   - **Date (A.D.)** — today's date is filled in automatically; tap the date box to choose another, or **Today** to reset. For multi-day trainings use **+ It ran over several days** to add an end date. Have only the B.S. date from the report? Open **"Have the date in B.S.?"** and convert it — the site always shows A.D. dates.
+   - **Place** (optional), **Short summary** (shown on the home-page card, max 220 characters) and **Full description** (blank line between paragraphs).
+   - **Photos** — choose 2–3 photos (up to 8). The first photo is the cover; use the arrows to reorder. Each photo **must** have alt text describing what it shows (not a file name). Large phone photos are shrunk automatically.
+   - **More options** — Nepali title/description and an optional report PDF/Word file.
+4. Check the preview card, keep **Publish** ticked, then **Publish activity**. Untick Publish to save a hidden draft.
+
+Where it appears: the newest 4 published activities show on the home page under **Our Recent Activities**; all of them are on `/activities`, and each has its own shareable page (`/activities/<title-slug>`). The web address is fixed on first save so shared links keep working after edits. Use **Edit / Unpublish / Delete** in the list to manage them.

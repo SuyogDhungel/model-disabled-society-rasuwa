@@ -81,22 +81,51 @@ export default async function handler(request, response) {
     const requestPath = (request.url || "/").split("?")[0];
     const pageUrl = siteUrl + requestPath;
 
-    const title = seo.title || org.nameEn || org.shortNameEn || "Namuna Apanga Samaj Rasuwa";
-    const description = seo.description || "";
+    const siteTitle = seo.title || org.nameEn || org.shortNameEn || "Namuna Apanga Samaj Rasuwa";
+    let title = siteTitle;
+    let description = seo.description || "";
     const absolute = (u) => (u ? (u.startsWith("http") ? u : siteUrl + (u.startsWith("/") ? u : "/" + u)) : "");
-    const image = absolute(seo.socialImageUrl) || absolute(org.logoUrl) || siteUrl + "/og-image.png";
-    const imageAlt = seo.socialImageAlt || org.logoAlt || `${title} logo`;
+    let image = absolute(seo.socialImageUrl) || absolute(org.logoUrl) || siteUrl + "/og-image.png";
+    let imageAlt = seo.socialImageAlt || org.logoAlt || `${title} logo`;
+    let ogType = "website";
+
+    // A shared activity link (/activities/<slug>) previews that activity's
+    // own title, summary and cover photo instead of the generic site card.
+    const activityMatch = /^\/activities\/([^/]+)\/?$/.exec(requestPath);
+    if (activityMatch && Array.isArray(content.activities)) {
+      const slug = decodeURIComponent(activityMatch[1]);
+      const activity = content.activities.find(
+        (a) => a && a.published !== false && (a.slug === slug || a.id === slug),
+      );
+      if (activity) {
+        title = `${activity.titleEn || activity.titleNe} — ${org.shortNameEn || siteTitle}`;
+        description = activity.summaryEn || description;
+        const cover = Array.isArray(activity.photos) ? activity.photos[0] : null;
+        if (cover?.url) {
+          image = absolute(cover.url);
+          imageAlt = cover.altEn || cover.altNe || imageAlt;
+        }
+        ogType = "article";
+      }
+    } else if (/^\/activities\/?$/.test(requestPath)) {
+      title = `Our Activities — ${org.shortNameEn || siteTitle}`;
+    }
 
     html = html.replace(/<title>.*?<\/title>/i, `<title>${escapeHtml(title)}</title>`);
     html = setMeta(html, "name", "description", description);
     html = setMeta(html, "property", "og:title", title);
     html = setMeta(html, "property", "og:description", description);
     html = setMeta(html, "property", "og:url", pageUrl);
+    html = setMeta(html, "property", "og:type", ogType);
     html = setMeta(html, "property", "og:image", image);
     html = setMeta(html, "property", "og:image:secure_url", image.startsWith("https://") ? image : "");
     html = setMeta(html, "property", "og:image:alt", imageAlt);
-    if (seo.socialImageWidth) html = setMeta(html, "property", "og:image:width", String(seo.socialImageWidth));
-    if (seo.socialImageHeight) html = setMeta(html, "property", "og:image:height", String(seo.socialImageHeight));
+    // Declared dimensions only describe the configured social image; an
+    // activity photo has its own size, so leave them off for activity pages.
+    const usingSocialImage = ogType === "website" && image === absolute(seo.socialImageUrl);
+    if (usingSocialImage && seo.socialImageWidth) html = setMeta(html, "property", "og:image:width", String(seo.socialImageWidth));
+    if (usingSocialImage && seo.socialImageHeight) html = setMeta(html, "property", "og:image:height", String(seo.socialImageHeight));
+    if (!usingSocialImage) html = html.replace(/\s*<meta\s+property=["']og:image:(width|height)["'][^>]*>/gi, "");
     html = setMeta(html, "name", "twitter:title", title);
     html = setMeta(html, "name", "twitter:description", description);
     html = setMeta(html, "name", "twitter:url", pageUrl);

@@ -16,6 +16,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://modeldisabledsocietyrasuwa.org.np/activities</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://modeldisabledsocietyrasuwa.org.np/notices</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>

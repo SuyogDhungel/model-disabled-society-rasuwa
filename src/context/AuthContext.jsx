@@ -14,6 +14,10 @@ const AuthContext = createContext(null);
 export function AuthProvider({ children }) {
   const [session, setSession] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  // "developer" can edit everything; "editor" (the organisation's staff)
+  // can only post activities. The database enforces the same rule
+  // (guard_site_content_scope trigger), so this only decides what to show.
+  const [role, setRole] = useState("editor");
   const [loading, setLoading] = useState(isSupabaseConfigured);
   const [authError, setAuthError] = useState("");
   const verifiedUserId = useRef("");
@@ -22,6 +26,7 @@ export function AuthProvider({ children }) {
     if (!nextSession?.user) {
       verifiedUserId.current = "";
       setIsAdmin(false);
+      setRole("editor");
       return false;
     }
     if (verifiedUserId.current === nextSession.user.id) {
@@ -35,6 +40,12 @@ export function AuthProvider({ children }) {
       return false;
     }
     const allowed = data === true;
+    if (allowed) {
+      // Missing function (database not yet updated) or any error -> the
+      // safe, limited "editor" view.
+      const { data: roleData, error: roleError } = await supabase.rpc("ngo_admin_role");
+      setRole(!roleError && roleData === "developer" ? "developer" : "editor");
+    }
     setIsAdmin(allowed);
     verifiedUserId.current = allowed ? nextSession.user.id : "";
     return allowed;
@@ -88,6 +99,7 @@ export function AuthProvider({ children }) {
   const value = {
     user: session?.user ?? null,
     isAdmin,
+    isDeveloper: isAdmin && role === "developer",
     loading,
     authError,
     signIn,

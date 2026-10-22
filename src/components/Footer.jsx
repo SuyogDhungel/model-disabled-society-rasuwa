@@ -39,6 +39,9 @@ export default function Footer() {
               <Link to="/programs">Programs</Link>
             </li>
             <li>
+              <Link to="/activities">Activities</Link>
+            </li>
+            <li>
               <Link to="/notices">Notices</Link>
             </li>
             <li>

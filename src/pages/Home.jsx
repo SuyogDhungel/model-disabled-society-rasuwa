@@ -4,6 +4,8 @@ import { useSiteContent } from "../context/SiteContentContext.jsx";
 import { usePageTitle } from "../hooks/usePageTitle.js";
 import { useNotices } from "../hooks/useNotices.js";
 import Localized from "../components/Localized.jsx";
+import ActivityCard from "../components/ActivityCard.jsx";
+import { publishedActivities } from "../lib/activities.js";
 import orgLogo from "../assets/org-logo.png";
 
 export default function Home() {
@@ -13,6 +15,7 @@ export default function Home() {
   const org = content.organization;
   const { notices, loading: noticesLoading } = useNotices();
   const latestNotices = notices.slice(0, 3);
+  const recentActivities = publishedActivities(content).slice(0, 4);
 
   usePageTitle(null);
 
@@ -58,7 +61,27 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section section-alt">
+      {recentActivities.length > 0 ? (
+        <section className="section section-alt" aria-labelledby="recent-activities-heading">
+          <div className="container">
+            <div className="section-heading-row">
+              <h2 id="recent-activities-heading">Our Recent Activities</h2>
+              <Link className="section-heading-link" to="/activities">
+                View all activities
+              </Link>
+            </div>
+            <ul className="activity-grid" role="list">
+              {recentActivities.map((a) => (
+                <li key={a.id}>
+                  <ActivityCard activity={a} headingLevel={3} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ) : null}
+
+      <section className="section">
         <div className="container">
           <h2>{home.focusHeading}</h2>
           <p className="lede">{home.focusIntro}</p>
@@ -94,7 +117,7 @@ export default function Home() {
       </section>
 
       {!noticesLoading && latestNotices.length > 0 ? (
-        <section className="section">
+        <section className="section section-alt">
           <div className="container">
             <h2>{home.noticesHeading}</h2>
             <ul className="notice-list">

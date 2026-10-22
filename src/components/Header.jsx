@@ -45,6 +45,7 @@ export default function Header() {
     { to: "/", label: "Home", end: true },
     { to: "/about", label: "About Us" },
     { to: "/programs", label: "Programs" },
+    { to: "/activities", label: "Activities" },
     { to: "/notices", label: "Notices" },
     { to: "/resources", label: "Resources" },
     { to: "/contact", label: "Contact" },

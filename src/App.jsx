@@ -10,6 +10,8 @@ import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Programs from "./pages/Programs.jsx";
 import Notices from "./pages/Notices.jsx";
+import Activities from "./pages/Activities.jsx";
+import ActivityDetail from "./pages/ActivityDetail.jsx";
 import Resources from "./pages/Resources.jsx";
 import Contact from "./pages/Contact.jsx";
 import PolicyPage from "./pages/PolicyPage.jsx";
@@ -23,6 +25,7 @@ const AdminLogin = lazy(() => import("./pages/admin/AdminLogin.jsx"));
 const AdminLayout = lazy(() => import("./pages/admin/AdminLayout.jsx"));
 const AdminSettings = lazy(() => import("./pages/admin/AdminSettings.jsx"));
 const AdminCollection = lazy(() => import("./pages/admin/AdminCollection.jsx"));
+const AdminActivities = lazy(() => import("./pages/admin/AdminActivities.jsx"));
 
 export default function App() {
   const { t } = useLanguage();
@@ -39,6 +42,8 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/programs" element={<Programs />} />
+          <Route path="/activities" element={<Activities />} />
+          <Route path="/activities/:slug" element={<ActivityDetail />} />
           <Route path="/notices" element={<Notices />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/contact" element={<Contact />} />
@@ -78,6 +83,14 @@ export default function App() {
               element={
                 <Suspense fallback={<p>Loading…</p>}>
                   <AdminSettings />
+                </Suspense>
+              }
+            />
+            <Route
+              path="activities"
+              element={
+                <Suspense fallback={<p>Loading…</p>}>
+                  <AdminActivities />
                 </Suspense>
               }
             />
