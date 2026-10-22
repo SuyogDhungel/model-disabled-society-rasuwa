@@ -5,6 +5,7 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import RouteFocusManager from "./components/RouteFocusManager.jsx";
 import RequireAuth from "./components/RequireAuth.jsx";
+import RequireDeveloper from "./components/RequireDeveloper.jsx";
 import { useLanguage } from "./context/LanguageContext.jsx";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
@@ -77,15 +78,7 @@ export default function App() {
               </RequireAuth>
             }
           >
-            <Route index element={<Navigate to="settings" replace />} />
-            <Route
-              path="settings"
-              element={
-                <Suspense fallback={<p>Loading…</p>}>
-                  <AdminSettings />
-                </Suspense>
-              }
-            />
+            <Route index element={<Navigate to="activities" replace />} />
             <Route
               path="activities"
               element={
@@ -94,14 +87,26 @@ export default function App() {
                 </Suspense>
               }
             />
+            <Route
+              path="settings"
+              element={
+                <RequireDeveloper>
+                  <Suspense fallback={<p>Loading…</p>}>
+                    <AdminSettings />
+                  </Suspense>
+                </RequireDeveloper>
+              }
+            />
             {["programs", "board", "notices", "resources"].map((type) => (
               <Route
                 key={type}
                 path={type}
                 element={
-                  <Suspense fallback={<p>Loading…</p>}>
-                    <AdminCollection type={type} />
-                  </Suspense>
+                  <RequireDeveloper>
+                    <Suspense fallback={<p>Loading…</p>}>
+                      <AdminCollection type={type} />
+                    </Suspense>
+                  </RequireDeveloper>
                 }
               />
             ))}

@@ -336,14 +336,14 @@ export default function AdminActivities() {
     <section className="admin-activities">
       <div className="admin-section-head">
         <div>
-          <h2>Activities</h2>
+          <h2>Activities & News</h2>
           <p className="meta">
-            News about completed trainings, events and programmes, with photos. The latest 4 published
-            activities appear on the home page under “Our Recent Activities”.
+            Publish news, events, workshops, and completed trainings with photos. The latest 4 published
+            posts appear on the home page under “Our Recent Activities”.
           </p>
         </div>
         <button type="button" className="btn btn-primary" onClick={() => openForm(blank())}>
-          + Add new activity
+          + Post new activity / news
         </button>
       </div>
 
