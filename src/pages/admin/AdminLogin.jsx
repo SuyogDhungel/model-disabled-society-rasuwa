@@ -1,7 +1,10 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { isSupabaseConfigured } from "../../lib/supabaseClient.js";
+
+const MAX_FAILED_ATTEMPTS = 5;
+const LOCKOUT_SECONDS = 30;
 
 // English-only by design: this page is a private tool for the site's
 // maintainer(s), not public content, so it doesn't need the bilingual
@@ -15,7 +18,17 @@ export default function AdminLogin() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [failedAttempts, setFailedAttempts] = useState(0);
+  const [lockoutTimer, setLockoutTimer] = useState(0);
   const emailRef = useRef(null);
+
+  useEffect(() => {
+    if (lockoutTimer <= 0) return;
+    const interval = setInterval(() => {
+      setLockoutTimer((t) => (t <= 1 ? 0 : t - 1));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [lockoutTimer]);
 
   if (!isSupabaseConfigured) {
     return (
@@ -38,6 +51,7 @@ export default function AdminLogin() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if (lockoutTimer > 0) return;
     setError("");
 
     if (!email.trim() || !password) {
@@ -49,9 +63,16 @@ export default function AdminLogin() {
     setSubmitting(true);
     try {
       await signIn(email.trim(), password);
+      setFailedAttempts(0);
     } catch (err) {
-      if (err?.message === "Invalid login credentials") {
-        setError("That email or password wasn't recognised. Double-check both and try again.");
+      const nextFailed = failedAttempts + 1;
+      setFailedAttempts(nextFailed);
+
+      if (nextFailed >= MAX_FAILED_ATTEMPTS) {
+        setLockoutTimer(LOCKOUT_SECONDS);
+        setError(`Too many failed login attempts. Please wait ${LOCKOUT_SECONDS} seconds before trying again.`);
+      } else if (err?.message === "Invalid login credentials") {
+        setError(`That email or password wasn't recognised. Double-check both and try again. (${nextFailed}/${MAX_FAILED_ATTEMPTS} attempts)`);
       } else if (err?.message?.includes("not listed as a site administrator")) {
         setError(err.message);
       } else {
@@ -106,8 +127,8 @@ export default function AdminLogin() {
           </p>
         ) : null}
 
-        <button type="submit" className="btn btn-primary" disabled={submitting}>
-          {submitting ? "Signing in…" : "Sign in"}
+        <button type="submit" className="btn btn-primary" disabled={submitting || lockoutTimer > 0}>
+          {lockoutTimer > 0 ? `Wait ${lockoutTimer}s` : submitting ? "Signing in…" : "Sign in"}
         </button>
       </form>
     </div>

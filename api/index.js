@@ -138,6 +138,15 @@ export default async function handler(request, response) {
   }
 
   response.setHeader("Content-Type", "text/html; charset=utf-8");
+  response.setHeader("X-Content-Type-Options", "nosniff");
+  response.setHeader("X-Frame-Options", "DENY");
+  response.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  response.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=(), usb=()");
+  response.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload");
+  response.setHeader(
+    "Content-Security-Policy",
+    "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; font-src 'self' data:; frame-src https://www.openstreetmap.org; form-action 'self' mailto:; upgrade-insecure-requests",
+  );
   // Short edge cache so a settings save shows up quickly without hitting
   // Supabase on every single page view.
   response.setHeader("Cache-Control", "public, max-age=0, s-maxage=60, stale-while-revalidate=300");
